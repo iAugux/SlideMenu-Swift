@@ -12,10 +12,26 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
-
+    
+    var storyboard = UIStoryboard(name: "Main", bundle: nil)
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        application.statusBarStyle = .LightContent
+        
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        UINavigationBar.appearance().titleTextAttributes = titleDict as [NSObject : AnyObject]
+        
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        
+        let containerViewController = ContainerViewController()
+        var homeNav = storyboard.instantiateViewControllerWithIdentifier("homeNav") as! UINavigationController
+        homeNav.viewControllers[0] = containerViewController
+        homeNav.setNavigationBarHidden(true, animated: false)
+        
+        window?.rootViewController = homeNav
+        
         return true
     }
 
