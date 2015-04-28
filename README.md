@@ -1,2 +1,4 @@
 # SlideMenu-Swift
-a SlideMenu in swift
+a SlideMenu demo in swift
+
+
