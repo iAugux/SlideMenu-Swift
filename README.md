@@ -4,7 +4,7 @@ A slide view demo in swift
 
 ### Contributions
 
-It was seperated from [Twitter-SideMenu-Swift](https://github.com/ziyang0621/Twitter-SideMenu-Swift)
+I seperated it from [Twitter-SideMenu-Swift](https://github.com/ziyang0621/Twitter-SideMenu-Swift) and did some modifications.
 
 
 ###Screenshots
