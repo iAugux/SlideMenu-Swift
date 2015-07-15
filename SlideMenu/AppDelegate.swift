@@ -21,12 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.statusBarStyle = .LightContent
         
         let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        UINavigationBar.appearance().titleTextAttributes = titleDict as [NSObject : AnyObject]
+        UINavigationBar.appearance().titleTextAttributes = titleDict as? [String : AnyObject]
         
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
         
         let containerViewController = ContainerViewController()
-        var homeNav = storyboard.instantiateViewControllerWithIdentifier("homeNav") as! UINavigationController
+        let homeNav = storyboard.instantiateViewControllerWithIdentifier("homeNav") as! UINavigationController
         homeNav.viewControllers[0] = containerViewController
         homeNav.setNavigationBarHidden(true, animated: false)
         

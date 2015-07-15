@@ -16,8 +16,12 @@ enum SlideOutState {
 
 class ContainerViewController: UIViewController, UIGestureRecognizerDelegate{
     
+    // 320 ~ 0
+    let centerPanelExpandedOffset: CGFloat = kScreenWidth - kExpandedOffSet
+
     var centerNavigationController: UINavigationController!
     var mainTabBarViewController: MainTabBarController!
+    var centerVCFrontBlurView: UIVisualEffectView!
     var leftViewController: SlidePanelViewController?
     var currentState: SlideOutState = .collapsed {
         didSet {
@@ -25,8 +29,12 @@ class ContainerViewController: UIViewController, UIGestureRecognizerDelegate{
             showShadowForCenterViewController(shouldShowShadow)
         }
     }
-    let centerPanelExpandedOffset: CGFloat = 60
     
+    override func loadView() {
+        super.loadView()
+        configureViews()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -36,15 +44,30 @@ class ContainerViewController: UIViewController, UIGestureRecognizerDelegate{
         addChildViewController(centerNavigationController)
         centerNavigationController.didMoveToParentViewController(self)
         
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
+        let panGestureRecognizer = UIScreenEdgePanGestureRecognizer(target: self, action: "handlePanGesture:")
+        panGestureRecognizer.edges = UIRectEdge.Left
         centerNavigationController.view.addGestureRecognizer(panGestureRecognizer)
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "handleTapGesture:")
+        centerVCFrontBlurView.addGestureRecognizer(tapGestureRecognizer)
+
     }
-    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        centerVCFrontBlurView.frame = CGRect(x: kExpandedOffSet , y: 0, width: kScreenWidth, height: kScreenHeight)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    func configureViews(){
+        //        centerVCFrontBlurView = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
+        let viewEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        centerVCFrontBlurView = UIVisualEffectView(effect: viewEffect)
+        centerVCFrontBlurView.hidden = true
+        self.navigationController?.view.addSubview(centerVCFrontBlurView)
+    }
     
     func toggleLeftPanel() {
         let notAlreadyExpanded = (currentState != .LeftPanelExpanded)
@@ -53,7 +76,7 @@ class ContainerViewController: UIViewController, UIGestureRecognizerDelegate{
             addLeftPanelViewController()
         }
         
-        animateLeftPanel(shouldExpand: notAlreadyExpanded)
+        animateLeftPanel(notAlreadyExpanded)
     }
     
     func addLeftPanelViewController() {
@@ -72,7 +95,7 @@ class ContainerViewController: UIViewController, UIGestureRecognizerDelegate{
         sidePanelController.didMoveToParentViewController(self)
     }
     
-    func animateLeftPanel(#shouldExpand: Bool) {
+    func animateLeftPanel(shouldExpand: Bool) {
         if (shouldExpand) {
             currentState = .LeftPanelExpanded
             
@@ -87,7 +110,7 @@ class ContainerViewController: UIViewController, UIGestureRecognizerDelegate{
         }
     }
     
-    func animateCenterPanelXPosition(#targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
+    func animateCenterPanelXPosition(targetPosition targetPosition: CGFloat, completion: ((Bool) -> Void)! = nil) {
         UIView.animateWithDuration(0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: {
             self.centerNavigationController.view.frame.origin.x = targetPosition
             }, completion: completion)
@@ -140,13 +163,33 @@ class ContainerViewController: UIViewController, UIGestureRecognizerDelegate{
         case .Ended:
             if (leftViewController != nil) {
                 // animate the side panel open or closed based on whether the view has moved more or less than halfway
-                let hasMovedGreaterThanHalfway = recognizer.view!.center.x > view.bounds.size.width
-                animateLeftPanel(shouldExpand: hasMovedGreaterThanHalfway)
+                let hasMovedGreaterThanHalfway = recognizer.view!.center.x > view.bounds.size.width / 1.5
+                animateLeftPanel(hasMovedGreaterThanHalfway)
+                if hasMovedGreaterThanHalfway {
+                    self.centerVCFrontBlurView.hidden = false
+                }
             }
         default:
             break
         }
     }
+    
+    
+    func handleTapGesture(recognizer: UITapGestureRecognizer){
+        if leftViewController != nil {
+            animateLeftPanel(false)
+            self.centerVCFrontBlurView.hidden = true
+        }
+    }
+    // close left panel
+    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if leftViewController != nil{
+            animateLeftPanel(false)
+            self.centerVCFrontBlurView.hidden = true
+            
+        }
+    }
+
 }
 
 

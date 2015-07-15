@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="36Z-Pb-m5M">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8152.3" systemVersion="15A215h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="36Z-Pb-m5M">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8124.4"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,9 +16,11 @@
                     <view key="view" contentMode="scaleToFill" id="Aua-il-0JQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" systemItem="history" id="xvd-HR-Mwg"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OE8-bV-0hi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -27,16 +30,13 @@
         <scene sceneID="pkg-dv-krX">
             <objects>
                 <viewController id="I9Y-cq-CBj" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="RoS-WP-USa"/>
-                        <viewControllerLayoutGuide type="bottom" id="9DP-eb-i9j"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="rrj-EJ-VcA">
+                    <imageView key="view" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crystal" id="UEZ-6x-x7i">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <animations/>
+                    </imageView>
                     <tabBarItem key="tabBarItem" systemItem="favorites" id="3TA-mU-BSy"/>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WWA-ik-pRq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -47,10 +47,12 @@
             <objects>
                 <tabBarController storyboardIdentifier="TabBarController" id="cTe-kR-1zS" customClass="MainTabBarController" customModule="SlideMenu" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="h7R-an-FWz"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="DeD-ZS-CjZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
@@ -72,10 +74,12 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cl7-Qy-x2Y">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="rcR-T2-0p9">
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </toolbar>
                     <connections>
                         <segue destination="cTe-kR-1zS" kind="relationship" relationship="rootViewController" id="OBb-gc-fb4"/>
@@ -99,9 +103,11 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qnr-X9-6ZM">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.46273926659999998" green="0.60147421560000003" blue="0.90003551140000004" alpha="1" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Qnr-X9-6ZM" firstAttribute="leading" secondItem="mmT-R6-10U" secondAttribute="leading" id="8D7-CV-eyy"/>
@@ -110,10 +116,14 @@
                             <constraint firstAttribute="trailing" secondItem="Qnr-X9-6ZM" secondAttribute="trailing" id="aA8-Cm-ohr"/>
                         </constraints>
                     </view>
+                    <nil key="simulatedTopBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aMa-rZ-ttp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="581" y="986"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="crystal" width="321" height="539"/>
+    </resources>
 </document>
