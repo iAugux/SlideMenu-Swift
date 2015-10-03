@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B13384881B5691A80094EA5E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13384871B5691A80094EA5E /* Constants.swift */; };
 		B1B4305D1AEE891A00960ED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B4305C1AEE891A00960ED9 /* AppDelegate.swift */; };
 		B1B430621AEE891A00960ED9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B1B430601AEE891A00960ED9 /* Main.storyboard */; };
 		B1B430641AEE891A00960ED9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B1B430631AEE891A00960ED9 /* Images.xcassets */; };
@@ -29,7 +28,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B13384871B5691A80094EA5E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B1B430571AEE891A00960ED9 /* SlideMenu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlideMenu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1B4305B1AEE891A00960ED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B1B4305C1AEE891A00960ED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,7 +85,6 @@
 				B1B430821AEE973C00960ED9 /* SlidePanelViewController.swift */,
 				B1B430841AEE976900960ED9 /* MainTabBarController.swift */,
 				B1B430861AEE97A400960ED9 /* ContainerViewController.swift */,
-				B13384871B5691A80094EA5E /* Constants.swift */,
 				B1B430601AEE891A00960ED9 /* Main.storyboard */,
 				B1B430631AEE891A00960ED9 /* Images.xcassets */,
 				B1B430651AEE891A00960ED9 /* LaunchScreen.xib */,
@@ -223,7 +220,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B13384881B5691A80094EA5E /* Constants.swift in Sources */,
 				B1B4305D1AEE891A00960ED9 /* AppDelegate.swift in Sources */,
 				B1B430831AEE973C00960ED9 /* SlidePanelViewController.swift in Sources */,
 				B1B430871AEE97A400960ED9 /* ContainerViewController.swift in Sources */,
@@ -358,8 +354,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SlideMenu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.augus.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iAugus.SlideMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -369,8 +366,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SlideMenu/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.augus.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.iAugus.SlideMenu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

@@ -15,10 +15,13 @@ enum SlideOutState {
 }
 
 
+let kExpandedOffSet: CGFloat = 130.0 
+
+
 class ContainerViewController: UIViewController, UIGestureRecognizerDelegate{
+    let kScreenWidth = UIScreen.mainScreen().bounds.width
+    let kScreenHeight = UIScreen.mainScreen().bounds.height
     
-    // 0 ~ 320
-    let centerPanelExpandedOffset: CGFloat = kScreenWidth - kExpandedOffSet
     var centerVCFrontBlurView: UIVisualEffectView!
     var centerNavigationController: UINavigationController!
     var mainViewController: MainTabBarController!
@@ -49,8 +52,16 @@ class ContainerViewController: UIViewController, UIGestureRecognizerDelegate{
         let viewEffect = UIBlurEffect(style: .Light)
         centerVCFrontBlurView = UIVisualEffectView(effect: viewEffect)
         centerVCFrontBlurView.alpha = 0.9
-        centerVCFrontBlurView.frame = self.view.bounds
+        centerVCFrontBlurView.frame = self.view.frame
         
+    }
+    
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        self.centerVCFrontBlurView.frame = CGRectMake(0, 0, 750, 750)
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        self.centerVCFrontBlurView.frame = self.view.frame
     }
     
     func configureGestureRecognizer(){
@@ -116,7 +127,7 @@ class ContainerViewController: UIViewController, UIGestureRecognizerDelegate{
     func animateLeftPanel(shouldExpand: Bool) {
         if (shouldExpand) {
             currentState = .LeftPanelExpanded
-            animateCenterPanelXPosition(kScreenWidth - centerPanelExpandedOffset)
+            animateCenterPanelXPosition(kExpandedOffSet)
         } else {
             animateCenterPanelXPosition(0) { finished in
                 self.currentState = .collapsed
