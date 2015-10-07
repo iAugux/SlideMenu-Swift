@@ -47,6 +47,23 @@ class ContainerViewController: UIViewController, UIGestureRecognizerDelegate{
     }
     
     
+    /**
+     - fixed bug:
+     when device rotated from landspace, overlay blur view can't cover all over screen.
+     */
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        self.centerVCFrontBlurView.frame = CGRectMake(0, 0, 750, 750)
+    }
+    
+    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
+        self.centerVCFrontBlurView.frame = self.view.frame
+    }
+    
+    override func viewDidLayoutSubviews() {
+        self.centerVCFrontBlurView.frame = self.view.frame
+    }
+
+    
     func configureBlurView(){
         //        centerVCFrontBlurView = UIButton.buttonWithType(UIButtonType.Custom) as! UIButton
         let viewEffect = UIBlurEffect(style: .Light)
@@ -54,14 +71,6 @@ class ContainerViewController: UIViewController, UIGestureRecognizerDelegate{
         centerVCFrontBlurView.alpha = 0.9
         centerVCFrontBlurView.frame = self.view.frame
         
-    }
-    
-    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
-        self.centerVCFrontBlurView.frame = CGRectMake(0, 0, 750, 750)
-    }
-    
-    override func didRotateFromInterfaceOrientation(fromInterfaceOrientation: UIInterfaceOrientation) {
-        self.centerVCFrontBlurView.frame = self.view.frame
     }
     
     func configureGestureRecognizer(){
