@@ -60,6 +60,7 @@ class ContainerViewController: UIViewController, UIGestureRecognizerDelegate{
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         self.centerVCFrontBlurView.frame = self.view.frame
     }
 
