@@ -8,8 +8,8 @@ I seperated it from [Twitter-SideMenu-Swift](https://github.com/ziyang0621/Twitt
 
 
 ###Screenshots
+<img src="https://raw.githubusercontent.com/iAugux/ProjectScreenshots/master/SlideMenu-Swift/SlideViewController.gif"/>
 
-![sample](Screenshots/SlideViewController.gif)
 
 
 ## The MIT License (MIT)
